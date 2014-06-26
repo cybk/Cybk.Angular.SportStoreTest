@@ -17,6 +17,8 @@ app.get('/', function(req, res) {
 
 app.use('/views', express.static(path.join(__dirname + '/Angular/Views')));
 
+app.use('/components', express.static(path.join(__dirname + '/Angular/Components')));
+
 
 app.get('/Products', products.findAll);
 

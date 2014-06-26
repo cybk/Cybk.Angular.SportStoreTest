@@ -11,6 +11,9 @@
                     {{item.Price | currency}}
                 </span>
             </h3>
+             <button ng-click="addProductToCart(item)" class="btn btn-success pull-right">
+                Add to cart
+            </button>
             <span class="lead">
                 {{item.Description}}
             </span>
