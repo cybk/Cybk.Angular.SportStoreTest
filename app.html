@@ -16,7 +16,7 @@
                     templateUrl: "/Views/ProductList.html"
                 });
                 
-                $routeProvider.when({
+                $routeProvider.otherwise({
                     templateUrl: "/Views/ProductList.html"
                 });
             });
@@ -30,7 +30,12 @@
     <body ng-controller="sportsStoreCtrl">
         <div class="navbar navbar-inverse">
             <a class="navbar-brand" href="#">Sports Store</a>
+            <cart-summary/>
         </div>
-       <ng-include src="'Views/productList.html'"></ng-include>
+         <div class="alert alert-danger" ng-show="data.error">
+            Error ({{data.error.status}}). The product data was not loaded.
+            <a href="/app.html" class="alert-link">Click here to try again</a>
+        </div>
+        <ng-view/>
     </body>
 </html>
