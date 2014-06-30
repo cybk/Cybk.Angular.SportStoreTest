@@ -5,13 +5,13 @@ angular.module("cart", [])
         return {
             addProduct: function(id, name, price){
              var addToExisting = false;
-                for (var i = 0; i < cartData.length; i++){
-                    if (cartData[i].id == id){
-                        cartData[i].count++;
+                angular.forEach(cartData, function(item, key){
+                    if (item.id == id){
+                        item.count++;
                         addToExisting = true;
                         break;
                     }
-                }
+                });
                 
                 if (!addToExisting){
                     cartData.push({
@@ -21,12 +21,11 @@ angular.module("cart", [])
             },
             
             removeProduct: function(id){
-                for (var i = 0; i<cartData.length; i++){
-                    if (cartData[i].id == id){
-                        cartData.splice(i, 1);
-                        break;
+                angular.forEach(cartData, function(item, key){
+                    if (item.id == id){
+                        cartData.splice(key, 1)
                     }
-                }
+                });
             },
             
             getProducts: function(){
@@ -43,18 +42,18 @@ angular.module("cart", [])
             
             $scope.total = function(){
                 var total = 0;
-                for (var i = 0; i<cartData.length; i++){
-                    total += (cartData[i].price * cartData[i].count);
-                }
+                angular.forEach(cartData, function(item, key){
+                   total += item.price * item.count; 
+                });
                 
                 return total;
             }
             
             $scope.itemCount = function(){
                 var total = 0;
-                for (var i = 0; i<cartData.length; i++){
-                    total += cartData[i].count;
-                }
+                angular.forEach(cartData, function(item, key){
+                   total += item.count; 
+                });
                 
                 return total;
             }
